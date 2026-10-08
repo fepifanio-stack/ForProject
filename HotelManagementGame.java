@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class HotelManagementGame extends JFrame {
 
-    //  palette 
+   
     static final Color BG1 = new Color(11, 14, 28), BG2 = new Color(24, 29, 56);
     static final Color SURF = new Color(23, 28, 50), SURF2 = new Color(33, 40, 70);
     static final Color LINE = new Color(58, 68, 108);
@@ -21,7 +21,7 @@ public class HotelManagementGame extends JFrame {
         return new Font("SansSerif", style, size);
     }
 
-    // helpers 
+   
     static void smooth(Graphics2D g2) {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -55,7 +55,7 @@ public class HotelManagementGame extends JFrame {
         return w;
     }
 
-    // model ni dire bai
+    
     enum RoomType {
         SINGLE("Single", 1000, TEAL), DOUBLE("Double", 1500, ACCENT), DELUXE("Deluxe", 2500, AMBER);
         final String label;
@@ -106,7 +106,7 @@ public class HotelManagementGame extends JFrame {
     static final int[] UPG_MAX = {3, 3, 3, 2};
     static final int MAX_QUEUE = 6;
 
-    //  game state
+    
     int money = 10000, reputation = 50, level = 1, day = 1, totalGuests = 0, totalEarned = 0;
     int[] upg = new int[4];
     final Random rnd = new Random();
@@ -118,20 +118,20 @@ public class HotelManagementGame extends JFrame {
     RoomTile dropTarget = null;
     boolean busy = false;
 
-    // daily goal
+   
     int goalType, goalTarget, goalProgress, goalMoney, goalRep;
     boolean goalDone;
 
-    // day summary / events
+    
     String summaryText = "";
     int pendingEvent = 0;
 
-    // animation
+   
     double pulse = 0, skyT = 0.05, dispMoney = 10000;
     Timer animTimer;
     final Overlay overlay = new Overlay();
 
-    // UI refs
+    
     JLabel moneyLbl, dayLbl, levelLbl, guestsLbl, statusLbl, queueTitle, goalLbl, goalReward;
     PillBar repBar, levelBar, goalBar;
     JPanel queuePanel;
@@ -140,7 +140,7 @@ public class HotelManagementGame extends JFrame {
     UpgBtn[] shopBtns = new UpgBtn[4];
 
     
-    // CUSTOM COMPONENTS
+    
     
 
     static class GradientPanel extends JPanel {
@@ -211,7 +211,7 @@ public class HotelManagementGame extends JFrame {
         }
     }
 
-    /**Katong sa taas Rounded progress bar. **/
+    
     static class PillBar extends JComponent {
         final Color c;
         double target, shown;
@@ -260,7 +260,7 @@ public class HotelManagementGame extends JFrame {
         }
     }
 
-    /** Upgrade button ni dire dawgs. */
+    
     class UpgBtn extends JButton {
         final int idx;
 
@@ -314,7 +314,7 @@ public class HotelManagementGame extends JFrame {
         }
     }
 
-    /** Katong sky strip sa taas . */
+    
     class SkyPanel extends JPanel {
         final double[][] stars = new double[40][3];
 
@@ -381,7 +381,7 @@ public class HotelManagementGame extends JFrame {
     }
 
    
-    // OVERLAY (glass pane): toasts, particles, drag ghost, day fade
+   
     
 
     static class Particle {
@@ -416,7 +416,7 @@ public class HotelManagementGame extends JFrame {
 
         @Override
         public boolean contains(int x, int y) {
-            return false; // let mouse events pass through
+            return false; 
         }
 
         void toast(String t, Color c) {
@@ -549,7 +549,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // CONSTRUCTOR / SETUP
+  
     
 
     public HotelManagementGame() {
@@ -664,7 +664,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // BUILD GUI
+    
     
 
     void buildGUI() {
@@ -878,7 +878,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // ROOM TILE
+ 
     
 
     class RoomTile extends JPanel {
@@ -1204,7 +1204,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // REFRESH HELPERS
+   
     
 
     void refreshAll() {
@@ -1266,7 +1266,7 @@ public class HotelManagementGame extends JFrame {
         logArea.setCaretPosition(logArea.getDocument().getLength());
     }
 
-    /** Status line only. */
+   
     void flash(String msg, Color c) {
         statusLbl.setText(msg);
         statusLbl.setForeground(c);
@@ -1292,7 +1292,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // GOALS YARNS
+  
     
 
     void newGoal() {
@@ -1341,7 +1341,7 @@ public class HotelManagementGame extends JFrame {
                 goalType == 1 ? "" : goalProgress + " / " + goalTarget);
     }
 
-    //Game Logic Bussing
+    
     
     double mult(Guest g) {
         double m = 1.0 + upg[2] * 0.10;
@@ -1758,7 +1758,7 @@ public class HotelManagementGame extends JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         } catch (Exception ignored) {
-            // use default look and feel
+          
         }
         SwingUtilities.invokeLater(() -> new HotelManagementGame().setVisible(true));
     }
