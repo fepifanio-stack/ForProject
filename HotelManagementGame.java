@@ -1058,7 +1058,7 @@ public class HotelManagementGame extends JFrame {
     }
 
     
-    // GUEST CARD (click to select OR drag onto a room)
+    
     
 
     class GuestCard extends JPanel {
@@ -1272,7 +1272,7 @@ public class HotelManagementGame extends JFrame {
         statusLbl.setForeground(c);
     }
 
-    /** Status line + toast. */
+    
     void note(String msg, Color c) {
         flash(msg, c);
         overlay.toast(msg, c);
@@ -1373,7 +1373,7 @@ public class HotelManagementGame extends JFrame {
         return g;
     }
 
-    /** Adds money, tracks goal progress and shows a coin burst on the room. */
+   
     void earn(int amt, Room r, String label) {
         money += amt;
         totalEarned += amt;
